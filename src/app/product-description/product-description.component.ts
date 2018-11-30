@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { ProductService } from '../product.service';
+import { Album } from 'app/album';
 
 @Component({
   selector: 'app-product-description',
@@ -8,13 +9,13 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-description.component.css']
 })
 export class ProductDescriptionComponent implements OnInit {
-  albumInfo;
+  albumInfo: Album;
 
   constructor(private _productService: ProductService) {}
 
   ngOnInit() {
     this._productService
       .getAlbum(1)
-      .subscribe(response => this.albumInfo = response);
+      .subscribe(response => (this.albumInfo = response));
   }
 }
